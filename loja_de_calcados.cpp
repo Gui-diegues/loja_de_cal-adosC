@@ -21,7 +21,7 @@ int main(){
         scanf("%d", &codigo);
 
         printf("Digite a descricao do produto: ");
-        scanf(" %[^\n]", descricao); // Lê até a quebra de linha 
+        scanf(" %[^\n]", descricao); // LÃª atÃ© a quebra de linha 
 
         printf("Digite o tamanho do produto: ");
         scanf(" %s", tamanho);
