@@ -4,7 +4,7 @@
 
 #define MAX_PRODUTOS 100   //max de itens no estoque 
 
-//representação do produto
+//representação dos produtos
 typedef struct {
     int codigo;
     char descricao[50];
@@ -19,18 +19,18 @@ Produto estoque[MAX_PRODUTOS];
 int total = 0;
 
 
-// Cadastrando produto
+// Cadastrando os produtos
 void cadastrarProduto() {
     if (total < MAX_PRODUTOS) {
         Produto p;
 
         printf("Codigo: ");
         scanf("%d", &p.codigo);
-        getchar(); // limpar buffer
+        getchar(); // limpar o buffer
 
         printf("Descricao: ");
         fgets(p.descricao, 50, stdin);
-        p.descricao[strcspn(p.descricao, "\n")] = 0; // remover \n
+        p.descricao[strcspn(p.descricao, "\n")] = 0; // remover o \n
 
         printf("Tamanho: ");
         scanf("%d", &p.tamanho);
@@ -59,7 +59,7 @@ void cadastrarProduto() {
 }
 
 
-// Função para listar produtos
+// Função para listar os produtos
 void listarProdutos() {
     if (total == 0) {
         printf("Nenhum produto cadastrado.\n");
@@ -78,7 +78,7 @@ void listarProdutos() {
     }
 }
 
-// Função para buscar produto pelo código
+// Função para buscar os produto pelo código
 void buscarProduto() {
     int codigo;
     printf("Digite o codigo do produto: ");
@@ -132,3 +132,4 @@ int main(){
     system("pause"); // <- faz o programa esperar antes de fechar
     return 0;
     }
+
