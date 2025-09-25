@@ -4,7 +4,7 @@
 
 #define MAX_PRODUTOS 100   //max de itens no estoque 
 
-//representação do produto
+//representaÃ§Ã£o do produto
 typedef struct {
     int codigo;
     char descricao[50];
@@ -59,7 +59,7 @@ void cadastrarProduto() {
 }
 
 
-// Função para listar produtos
+// FunÃ§Ã£o para listar produtos
 void listarProdutos() {
     if (total == 0) {
         printf("Nenhum produto cadastrado.\n");
@@ -78,7 +78,7 @@ void listarProdutos() {
     }
 }
 
-// Função para buscar produto pelo código
+// FunÃ§Ã£o para buscar produto pelo cÃ³digo
 void buscarProduto() {
     int codigo;
     printf("Digite o codigo do produto: ");
