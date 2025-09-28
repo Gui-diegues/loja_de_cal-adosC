@@ -64,3 +64,54 @@ void cadastrarfuncionario() {
 	listas++;
 	printf("Funcionário cadastrado com sucesso!/n");
 }
+
+// função de vizualizar funcionários
+void visualizarFuncionarios () {
+	if (listas == 0) {
+		printf("\nNenhum funcionário cadastrado ainda.\n");
+	} else {
+		printf("\n--- Lista de Funcionários ---\n");
+		for (int i = 0; i < listas; i++) {
+			printf("\nFuncionário %d: \n", i + 1);
+			printf("Matrícula: %d\n", lista[i].matricula);
+			printf("Nome: %s\n", lista[i].nome);
+			printf("Endereço: %s\n", lista[i].endereco);
+			printf("Telefone: %d\n", lista[i].telefone);
+			printf("Data de nascimento: %02d/%02d/%04d\n", lista[i].dia, lista[i].mes, lista[i].ano);
+			printf("Salário: R$ %d\n", lista[i].salario);
+			printf("Experiência: %s\n", lista[i].experiencia);
+		}
+	}
+}
+
+// função principal (menu)
+int main() {
+    int opcao;
+
+    do {
+        printf("\n--- MENU FUNCIONÁRIOS ---\n");
+        printf("1 - Cadastrar funcionário\n");
+        printf("2 - Visualizar funcionários\n");
+        printf("3 - Sair\n");
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+        getchar();
+
+        switch (opcao) {
+            case 1:
+                cadastrarfuncionario();
+                break;
+            case 2:
+                visualizarFuncionarios();
+                break;
+            case 3:
+                printf("Saindo do programa...\n");
+                break;
+            default:
+                printf("Opção inválida! Tente novamente.\n");
+        }
+
+    } while (opcao != 3);
+
+    return 0;
+}
