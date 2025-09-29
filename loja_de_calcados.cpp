@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_PRODUTOS 100   //max de itens no estoque 
-#define MAX_VENDAS 100 //max de vendas registradas
+#define MAX_PRODUTOS 100 
+#define MAX_VENDAS 100 
 
-//representação dos produtos
+//representacao dos produtos
 typedef struct {
     int codigo;
     char descricao[50];
@@ -17,7 +17,7 @@ typedef struct {
     float valor;
 } Produto;
 
-// representação da venda
+// representacao da venda
 typedef struct {
     int codigoProduto;
     int quantidadeVendida;
@@ -26,10 +26,11 @@ typedef struct {
 } Venda;
 
 Produto estoque[MAX_PRODUTOS];
+Venda vendas[MAX_VENDAS];
 int total = 0;
 int totalVendas = 0;
 
-// verificar se o código já existe
+// verificar se o codigo ja� existe
 int codigoExistente(int codigo) {
     for (int i = 0; i < total; i++) {
         if (estoque[i].codigo == codigo) {
@@ -79,7 +80,7 @@ void cadastrarProduto() {
 }
 
 
-// Função para listar os produtos
+// listar os produtos
 void listarProdutos() {
     if (total == 0) {
         printf("Nenhum produto cadastrado.\n");
@@ -98,7 +99,7 @@ void listarProdutos() {
     }
 }
 
-// Função para buscar os produto pelo código
+// buscar os produto pelo codigo
 void buscarProduto() {
     int codigo;
     printf("Digite o codigo do produto: ");
