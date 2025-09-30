@@ -1,10 +1,12 @@
-#include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <locale.h>
+#include <stdio.h>
 
-#define MAX_PRODUTOS 100   //max de itens no estoque 
+
+#define MAX_PRODUTOS 100   //max de itens no estoque
 #define MAX_VENDAS 100 //max de vendas registradas
+
 
 //representação dos produtos
 typedef struct {
@@ -15,13 +17,15 @@ typedef struct {
 
 // representação da venda
 typedef struct {
-    int codigoProduto, quantidaVendida;
+    int codigoProduto, quantidadeVendida;
     float valorTotal;
     char dataHora[30];
 } Venda;
 
+Venda vendas[MAX_VENDAS];
 Produto estoque[MAX_PRODUTOS];
-int total = 0, totalVendas = 0;
+
+int total = 0, totalVendas = 0; //"total" se refere ao total do estoque.
 
 // verificar se o código já existe
 int codigoExistente(int codigo) {
@@ -81,14 +85,15 @@ void listarProdutos() {
     }
 
     for (int i = 0; i < total; i++) {
-        printf("Codigo: %d | Descricao: %s | Tamanho: %d | Cor: %s | Marca: %s | Quantidade: %d | Valor: %.2f\n",
+        printf("\n| Codigo: %d \n| Descricao: %s \n| Tamanho: %d \n| Cor: %s \n| Marca: %s \n| Quantidade: %d \n| Valor: %.2f\n",
                estoque[i].codigo,
                estoque[i].descricao,
                estoque[i].tamanho,
                estoque[i].cor,
                estoque[i].marca,
                estoque[i].quantidade,
-               estoque[i].valor);
+               estoque[i].valor
+			);
     }
 }
 
@@ -100,14 +105,17 @@ void buscarProduto() {
 
     for (int i = 0; i < total; i++) {
         if (estoque[i].codigo == codigo) {
-            printf("\n=== Produto Encontrado ===\n");
-            printf("Codigo: %d\n", estoque[i].codigo);
-            printf("Descricao: %s\n", estoque[i].descricao);
-            printf("Tamanho: %d\n", estoque[i].tamanho);
-            printf("Cor: %s\n", estoque[i].cor);
-            printf("Marca: %s\n", estoque[i].marca);
-            printf("Quantidade: %d\n", estoque[i].quantidade);
-            printf("Valor: %.2f\n", estoque[i].valor);
+            printf(
+					"\n=== Produto Encontrado ===\n"
+		        	"Codigo: %d\n", estoque[i].codigo
+		            "Descricao: %s\n", estoque[i].descricao
+		            "Tamanho: %d\n", estoque[i].tamanho
+		            "Cor: %s\n", estoque[i].cor
+		            "Marca: %s\n"estoque[i].marca
+		            "Quantidade: %d\n"
+		            "Valor: %.2f\n",
+					estoque[i].quantidade, estoque[i].valor
+				);
             return;
         }
     }
@@ -117,7 +125,7 @@ void buscarProduto() {
 // Efetuar venda
 void efetuarVenda() {
     if (total == 0) {
-        printf("Nao ha produtos cadastrados!\n");
+        printf("Não há produtos cadastrados.\n");
         return;
     }
 
@@ -168,50 +176,72 @@ void efetuarVenda() {
 }
 
 int main(){
-    int opcao, opcaoitem;
-    
-    do{ 
-    printf("LOJA DE CALCADOS\n\n");
-    printf("Escolha uma opcao:\n");
-    printf(" 1.Funcionario\n 2.Item\n 3.Efetuar venda\n 4.Exit\n");
-    scanf("%d", &opcao);
-        
-    switch(opcao){
-         case 1 :
-        	printf("Funcionalidade de funcionario ainda não implementada \n");
-            break;
-        case 2 :
-            do { 
-            printf("\n==== MENU ESTOQUE ====\n");
-            printf("1 - Cadastrar Produto\n");
-            printf("2 - Listar Produtos\n");
-            printf("3 - Buscar Produto\n");
-            printf("0 - Sair\n");
-            printf("Escolha: ");
-            scanf("%d", &opcaoitem);
+	
+    setlocale(LC_ALL, "Portuguese");
 
-        switch (opcaoitem) {
-            case 1: cadastrarProduto(); break;
-            case 2: listarProdutos(); break;
-            case 3: buscarProduto(); break;
-            case 0: printf("Saindo...\n"); break;
-            default: printf("Opcao invalida!\n");
-        }
-    } while (opcaoitem != 0);
-    break;
-        case 3 :
-		efetuarVenda();
-		break;
-	case 4 :
-		printf("Saindo do programa...\n");
-		break;
-    default :
-    	printf("Opção inválida\n");
-    }
-    
-} while(opcao != 4);
-    
+    unsigned short opcao, opcaoitem;
+
+    do{
+        printf(
+			"\n\nObs.:Não iserir nenhum caractere que não seja número."
+			"\nO leitor lerá o primeiro caractere como resposta, mesmo sendo espaços em branco."
+			"\n\nLOJA DE CALCADOS"
+	        "\n\nEscolha uma opção:"
+	        "\n\t1|Funcionário\n\t2|Item\n\t3|Efetuar venda\n\t4|Saída"
+	        "\n\nOpção: "
+		);
+        scanf("%d", &opcao);
+       
+        switch(opcao){
+            case 1:
+                printf("\n\nFuncionalidade de funcionario ainda não implementada \n");
+                break;
+            case 2:
+                do{
+                    printf(
+						"\n\nObs.:Não iserir nenhum caractere que não seja número."
+						"O leitor lerá o primeiro caractere como resposta, mesmo sendo espaços em branco."
+						"\n\n==== MENU ESTOQUE ===="
+	                    "\n1 - Cadastrar Produto"
+	                    "\n2 - Listar Produtos"
+	                    "\n3 - Buscar Produto"
+	                	"\n0 - Sair"
+	                    "\n\nEscolha: "
+					);
+                    scanf("%d", &opcaoitem);
+
+                    switch (opcaoitem) {
+                        case 1:
+                            cadastrarProduto();
+                            break;
+                        case 2:
+                            listarProdutos();
+                            break;
+                        case 3:
+                            buscarProduto();
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            printf("\n\nOpcao invalida!\n");
+                            break;
+                    }
+                } while (opcaoitem != '0');
+                break;
+            case 3:
+                efetuarVenda();
+                break;
+            case 4:
+                break;
+            default:
+                printf("\n\nOpção inválida\n");
+                break;
+            }
+		printf("\n\n=========================================================================================");
+    } while(opcao != '4');
+
+    printf("=======OPERAÇÃO FINALIZADA=======");
+   
     system("pause"); // <- faz o programa esperar antes de fechar
     return 0;
-    }
-
+}
