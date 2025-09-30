@@ -7,12 +7,13 @@
 #define MAX_PRODUTOS 100   //max de itens no estoque
 #define MAX_VENDAS 100 //max de vendas registradas
 
+
 //Obs.: As minhas partes terminam com o comentário "Joás" ao final do meu incremento.
 //Feito por: Luna N., JOÁS.
 typedef struct{
 	unsigned short nota_da_avaliacao;
 	unsigned char comentario[100];
-} Avaliacao; //Joás
+} Avaliacao;//Joás
 
 
 //representação dos produtos
@@ -257,7 +258,7 @@ int main(){
 		printf("\n\n\n=================AVALIAÇÃO=================");
 		do{
 			printf("\n\nDe zero a dez({x e N | 0 <= x <= 10}), qual nota você atribui ao serviço? ");
-			scanf("%d", avaliando.nota_da_avaliacao); getchar();
+			scanf("%d", &avaliando.nota_da_avaliacao); getchar();
 		}while(avaliando.nota_da_avaliacao > 10 || avaliando.nota_da_avaliacao < 0);		
 
 		printf("\n\nInsere um comentário que justifique a nota: \n\n\t");
