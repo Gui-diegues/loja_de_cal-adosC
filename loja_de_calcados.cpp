@@ -327,4 +327,4 @@ int main(){
     
     
     
-// Participantes: Guilherme Diegues, Lana Reis, Pedro Domingos, Leandra Bazilio, Yrllan, Jayane Ellen e Joás Luna.
+// Participantes: Guilherme Diegues, Lana Reis, Pedro Domingos, Leandra Bazilio, Yrllan, Jayane Ellen, Joás Luna e Taylan Ryck.
